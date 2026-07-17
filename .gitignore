@@ -1,0 +1,5 @@
+build
+build-legacy
+*/*.o
+*/*.a
+*.test
