@@ -55,6 +55,8 @@ OBJCOPY := $(shell command -v llvm-objcopy 2>/dev/null || command -v objcopy 2>/
 
 .PHONY: all iso run run-grub img run-img clean
 
+# build kernel
+
 all: $(KERNEL)
 	@echo "[naoixos] built with $(COMPILER_ID)"
 
@@ -70,14 +72,20 @@ $(BUILD_DIR)/%.o: %.S
 	@mkdir -p $(dir $@)
 	$(CC) $(ASFLAGS) -c $< -o $@
 
+# run in qemu
+
 run: $(KERNEL)
 	qemu-system-i386 -kernel $(KERNEL) -m 128 -nographic
+
+# build iso, grub tools needed
 
 iso: $(KERNEL)
 	mkdir -p $(BUILD_DIR)/isodir/boot/grub
 	cp $(KERNEL) $(BUILD_DIR)/isodir/boot/naoixos.elf
 	cp grub.cfg $(BUILD_DIR)/isodir/boot/grub/grub.cfg
 	grub-mkrescue -o $(BUILD_DIR)/naoixos.iso $(BUILD_DIR)/isodir
+
+# run ISO in qemu
 
 run-grub: iso
 	qemu-system-i386 -cdrom $(BUILD_DIR)/naoixos.iso -m 128 -nographic
@@ -107,13 +115,19 @@ $(BUILD_DIR)/stage1.elf: $(BUILD_DIR)/stage1.o boot/stage1.ld
 $(BUILD_DIR)/stage1.bin: $(BUILD_DIR)/stage1.elf
 	$(OBJCOPY) -O binary $< $@
 
+# build floppy img
+
 img: $(BUILD_DIR)/stage1.bin $(LEGACY_BUILD_DIR)/kernel.bin
 	cat $(BUILD_DIR)/stage1.bin $(LEGACY_BUILD_DIR)/kernel.bin > $(BUILD_DIR)/naoixos-floppy.img
 	truncate -s 1474560 $(BUILD_DIR)/naoixos-floppy.img
 	@echo "[naoixos] wrote $(BUILD_DIR)/naoixos-floppy.img (mount as Floppy in Limbo)"
 
+# run floppy img in qemu
+
 run-img: img
 	qemu-system-i386 -fda $(BUILD_DIR)/naoixos-floppy.img -m 128 -nographic
+
+# clean from build files
 
 clean:
 	rm -rf $(BUILD_DIR) $(LEGACY_BUILD_DIR) */*.o

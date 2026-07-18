@@ -26,7 +26,7 @@
 
 **Developer:** Jack (Khalid Oumouh)
 
-**Read Arabic version ![here](README-ar.md)**
+**Read Documentation in multiple languages ![here](## Documentation)**
 
 ---
 
@@ -114,6 +114,11 @@ naoixos/
 ├── linker.ld / linker-legacy.ld
 └── Makefile
 ```
+
+## Documentation
+
+- ![Arabic](README-ar.md)
+- ![English](README.md)
 
 ## License
 

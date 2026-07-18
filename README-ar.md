@@ -18,6 +18,7 @@
 ![Platform](https://img.shields.io/badge/arch-x86%20(i686)-lightgrey)
 
 
+
 ![Status](https://img.shields.io/badge/status-experimental-yellow)
 
 **الإصدار (Version):** `v0.6.8-rc1`
@@ -62,8 +63,8 @@ NaoixOS هي نواة (kernel) بدائية لمعمارية x86، مبنية م
 - **تعريف لوحة مفاتيح PS/2** — يدعم كشف تلقائي بين Set 1 و Set 2.
 - **منفذ تسلسلي (Serial port driver)** — للتصحيح (debugging) عبر COM1.
 - **شِل تفاعلي مدمج اسمه NaoixSH** — يحتوي أوامر مثل:
-  - `help`, `about`, `clear`, `ver`, `colors`
-  - Easter eggs مخفية (مثل `hidden-easter-egg` ووضع المطوّر `jackmasterdev`)
+- `help`, `about`, `clear`, `ver`, `colors`
+- Easter eggs مخفية (مثل `hidden-easter-egg` ووضع المطوّر `jackmasterdev`)
 - **مكتبة أساسية (`kstring`)** — دوال string بسيطة داخل بيئة freestanding.
 
 ## ما الذي لا تفعله بعد؟ (What's Missing)
@@ -112,6 +113,10 @@ naoixos/
 ├── linker.ld / linker-legacy.ld
 └── Makefile
 ```
+## التوثيق (Documentation)
+
+- ![Arabic](README-ar.md)
+- ![English](README.md)
 
 ## الحقوق والترخيص (License)
 
