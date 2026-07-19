@@ -6,7 +6,7 @@
 /* *  By: Jack (Khalid Oumouh)                                      +#+        * */
 /* *                                                               +#+         * */
 /* *  Created: 2026/07/05 14:38 by Jack                    #+#    #+#          * */
-/* *  Updated: 2026/07/16 07:21 by Jack                     ########           * */
+/* *  Updated: 2026/07/19 14:26 by Jack                     ########           * */
 /* *                                                                           * */
 /* ***************************************************************************** */
 
@@ -154,21 +154,37 @@ static void run_command(const char *line) {
     if (strcmp(line, "help") == 0) {
         terminal_writestring("Commands: help, about, clear, ver, colors\n");
     } else if (strcmp(line, "about") == 0) {
-        terminal_writestring("Kernel: NaoixOS - basic x86 kernel builted as a hobby.\n");
-        terminal_writestring("Shell : NaoixSH - basic x86 embeded shell hor NaoixOS.\n");
+        terminal_setcolor(VGA_LIGHT_BROWN, VGA_BLACK);
+        terminal_writestring("Kernel:");
+        terminal_setcolor(VGA_WHITE, VGA_BLACK);
+        terminal_writestring(" NaoixOS - basic x86 kernel builted as a hobby.\n");
+        terminal_setcolor(VGA_LIGHT_BROWN, VGA_BLACK);
+        terminal_writestring("Shell :");
+        terminal_setcolor(VGA_WHITE, VGA_BLACK);
+        terminal_writestring(" NaoixSH - basic x86 embeded shell hor NaoixOS.\n");
+        terminal_setcolor(VGA_LIGHT_GREY, VGA_BLACK);
     } else if (strcmp(line, "clear") == 0) {
         terminal_initialize();
     } else if (strcmp(line, "ver") == 0) {
-        terminal_writestring("Kernel: NaoixOS " KEVER "\n");
-        terminal_writestring("Shell : NaoixSH " SHVER "\n");
+        terminal_setcolor(VGA_LIGHT_MAGENTA, VGA_BLACK);
+        terminal_writestring("Kernel:");
+        terminal_setcolor(VGA_WHITE, VGA_BLACK);
+        terminal_writestring(" NaoixOS " KEVER "\n");
+        terminal_setcolor(VGA_LIGHT_MAGENTA, VGA_BLACK);
+        terminal_writestring("Shell :");
+	terminal_setcolor(VGA_WHITE, VGA_BLACK);
+	terminal_writestring(" NaoixSH " SHVER "\n");
+	terminal_setcolor(VGA_LIGHT_GREY, VGA_BLACK);
     } else if (strcmp(line, "colors") == 0) {
         print_color_bar();
-    } else if (strcmp(line, "hidden-easter-egg") == 0) {
+    } else if (strcmp(line, "hidden-easter-egg", "heaster") == 0) {
         terminal_setcolor(VGA_LIGHT_GREY, VGA_RED);
-        terminal_writestring("You found the hidden message writen by the developer\n If you are seeing this right now, i wanna say Thank you very much using my NaoixOS\n I will give you a little gift\n Type 'jackmasterdev' in terminal to see it!\n");
+        terminal_writestring("You found the hidden message writen by the developer jackidevz (Khalid Oumouh)\nIf you are seeing this right now, i wanna say Thank you very much for use my\nNaoixOS.\nI will give you a little gift\n Type 'jackmasterdev' or 'jmdevel' in terminal to see it!\n");
         terminal_setcolor(VGA_LIGHT_GREY, VGA_BLACK);
     } else if (strcmp(line, "jackmasterdev") == 0) {
         run_jackmasterdev();
+    } else if (strcmp(line, "jmdevel") == 0) {
+	run_jackmasterdev();
     } else if (strcmp(line, "sysinfo") == 0) {
         if (!dev_mode) {
             terminal_writestring("Unknown command: sysinfo\n");
