@@ -6,14 +6,14 @@
 /* *  By: Jack (Khalid Oumouh)                                      +#+        * */
 /* *                                                               +#+         * */
 /* *  Created: 2026/07/06 00:26 by Jack                    #+#    #+#          * */
-/* *  Updated: 2026/07/15 12:36 by Jack                     ########           * */
+/* *  Updated: 2026/07/19 14:27 by Jack                     ########           * */
 /* *                                                                           * */
 /* ***************************************************************************** */
 
 #ifndef VERSION_H
 #define VERSION_H
 
-#define SHVER "v0.2.3-patchV1"
+#define SHVER "v0.2.3-patchV2"
 #define KEVER "v0.6.8-rc1"
 
 #endif
