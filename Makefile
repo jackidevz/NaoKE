@@ -39,11 +39,13 @@ ifeq ($(COMPILER_ID),clang)
     ASFLAGS += --target=$(TARGET_TRIPLE)
     LD      := ld.lld
     LDFLAGS := -m elf_i386 --strip-all
+    LDFLAGS += -Map=$(BUILD_DIR)/kernel.map
 else
     CFLAGS  += -m32
     ASFLAGS += -m32
     LD      := $(CC)
     LDFLAGS := -m32 -ffreestanding -nostdlib -static -Wl,--strip-all
+    LDFLAGS += -Map=$(BUILD_DIR)/kernel.map
 endif
 
 LEGACY_BUILD_DIR := build-legacy
